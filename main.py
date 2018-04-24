@@ -3,6 +3,7 @@
 import sys
 from PyQt5.QtWidgets import (QWidget, QToolTip, QPushButton, QApplication)
 from PyQt5.QtGui import QFont
+from board import Board
 
 class Lines(QWidget):
     def __init__(self):
@@ -18,4 +19,5 @@ class Lines(QWidget):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = Lines()
+    board = Board()
     sys.exit(app.exec_())
