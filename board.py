@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import random
 from situations import valideStep
+from score import Score
 
 class Board():
     def __init__(self):
@@ -14,6 +15,7 @@ class Board():
                       [0,0,0,0,0,0,0,0,0]
                       [0,0,0,0,0,0,0,0,0]
                       [0,0,0,0,0,0,0,0,0]]
+        self.score = Score()
 
     def nextIteration(self):
         for i in range(0, 3):
@@ -35,6 +37,7 @@ class Board():
             if (count > 4):
                 for k in range(j - count, j):
                     self.board[i - 1][k] = 0
+                self.score.addPoints(count)
             count = 0
             for j in range(1, 9):
                 if (self.board[i][j] == self.board[i][j - 1]):
@@ -43,15 +46,18 @@ class Board():
                     if (count > 4):
                         for k in range(j - count, j):
                             self.board[i][k] = 0
+                        self.score.addPoints(count)
         if (count > 4):
             for k in range(j - count, j):
                 self.board[8][k] = 0
+            self.score.addPoints(count)
 
         count = 0;
         for j in range(0, 9):
             if (count > 4):
                 for k in range(i - count, i):
                     self.board[k][j - 1] = 0
+                self.score.addPoints(count)
             count = 0
             for i in range(1, 9):
                 if (self.board[i][j] == self.board[i][j - 1]):
@@ -60,8 +66,10 @@ class Board():
                     if (count > 4):
                         for k in range(i - count, i):
                             self.board[k][j] = 0
+                        self.score.addPoints(count)
         if (count > 4):
             for k in range(i - count, i):
                 self.board[k][8] = 0
+            self.score.addPoints(count)
 
 
