@@ -8,7 +8,6 @@ from board import Board
 '''
 Документация:
 Это игра Lines, цель игры - набрать наибольшее количество очков, игра происходит на поле 9 х 9
-
 '''
 
 class Lines(QWidget):
@@ -25,5 +24,4 @@ class Lines(QWidget):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = Lines()
-    board = Board()
     sys.exit(app.exec_())

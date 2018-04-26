@@ -1,13 +1,9 @@
 import unittest
 from board import Board
 
-boardFirst = Board()
-boardSecond = Board()
 boardHorizontal = Board()
 boardVertical = Board()
 
-boardFirst.board[0][0] = 2
-boardSecond.board[8][8] = 2
 for elem in boardHorizontal.board[3]:
     elem = 1;
 for i in range(0, 9):
@@ -15,7 +11,11 @@ for i in range(0, 9):
 
 class BoardTests(unittest.TestCase):
     def testStep(self):
-        boardFirst.step(0, 0, 8, 8, 2)
+        boardFirst = Board()
+        boardSecond = Board()
+        boardFirst.board[0][0] = 2
+        boardSecond.board[8][8] = 2
+        boardFirst.step(0, 0, 8, 8)
         self.assertEqual(boardFirst.board, boardSecond.board)
 
     def testNextIteration(self):
