@@ -3,17 +3,22 @@ from board import Board
 
 boardFirst = Board()
 boardSecond = Board()
-boardWithLine = Board()
+boardHorizontal = Board()
+boardVertical = Board()
 
 boardFirst.board[0][0] = 2
 boardSecond.board[8][8] = 2
-boardWithLine[3] = [1, 1, 1, 1, 1, 1, 1, 1, 1]
+for elem in boardHorizontal.board[3]:
+    elem = 1;
+for i in range(0, 9):
+    boardVertical.board[4][i] = 3
 
 class BoardTests(unittest.TestCase):
     def testStep(self):
-        self.assertEqual(Board.step(boardFirst, 0, 0, 8, 8, 2), boardSecond.board)
+        boardFirst.step(0, 0, 8, 8, 2)
+        self.assertEqual(boardFirst.board, boardSecond.board)
 
-    def nextIterationTest(self):
+    def testNextIteration(self):
         board = Board()
         for i in range(0, 27):
             board.nextIteration()
@@ -24,6 +29,12 @@ class BoardTests(unittest.TestCase):
                     self.assertEqual(True, False)
         self.assertEqual(True, True)
 
-    def lineTest(self):
+    def testHorizontalLine(self):
         emptyBoard = Board()
-        self.assertEqual(Board.lineExist(boardWithLine), emptyBoard.board)
+        boardHorizontal.lineExist()
+        self.assertEqual(boardHorizontal.board, emptyBoard.board)
+
+    def testVerticalLine(self):
+        emptyBoard = Board()
+        boardVertical.lineExist()
+        self.assertEqual(boardVertical.board, emptyBoard.board)

@@ -5,6 +5,12 @@ from PyQt5.QtWidgets import (QWidget, QToolTip, QPushButton, QApplication)
 from PyQt5.QtGui import QFont
 from board import Board
 
+'''
+Документация:
+Это игра Lines, цель игры - набрать наибольшее количество очков, игра происходит на поле 9 х 9
+
+'''
+
 class Lines(QWidget):
     def __init__(self):
         super().__init__()
